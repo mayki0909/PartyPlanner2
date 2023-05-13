@@ -1,5 +1,12 @@
+## Coding principles
+Controllers should stay simple as posible. All data parsing and validating try to do with DTO or Pipes.
+All logic should go in services.
+
+To create new module use `nest generate module Neki`
+
 ## Documentation
 Swagger documentation is accesible on http://localhost:3000/swagger
+NestJs documentation is accessible on https://docs.nestjs.com
 
 ## Installation
 
