@@ -2,7 +2,7 @@ import { Body, Controller, Request, Get, Post, UseGuards } from '@nestjs/common'
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login-auth.dto';
 import { AuthGuard } from './auth.guard';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { RegisterDto } from './dto/register-auth.dto';
 
 @ApiTags('Auth')
@@ -20,9 +20,10 @@ export class AuthController {
     return await this.authService.register(registerDto)
   }
   
+  @Get('test')
+  @ApiBearerAuth()
   @UseGuards(AuthGuard)
-  @Get('')
-  test(@Request() request) {
+  async test(@Request() request) {
     return request.user
   }
 }

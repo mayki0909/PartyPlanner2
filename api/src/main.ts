@@ -11,11 +11,13 @@ async function bootstrap() {
     .setTitle('Party Planner 2')
     .setDescription('Application that helps you throw party or event')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('swagger', app, document);
 
-  await app.listen(9000);
-  console.log('App is listening on port 9000.');
+  const port = process.env.port || 9000
+  await app.listen(port);
+  console.log(`http://localhost:${port} App is listening on port ${port}.`);
 }
 bootstrap();
